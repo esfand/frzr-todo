@@ -1,13 +1,16 @@
 
-import {filter, map, Views} from 'frzr'
+import {ViewList} from '../frzr/viewlist'
+import {View} from '../frzr/view'
+import {Observable} from '../frzr/observable'
+import {filter, map} from '../frzr/utils'
 import TodoItem from './todoitem'
 
-var localStorage = window.localStorage
-var todoitems = JSON.parse(localStorage.getItem('todoitems')) || []
+var localStorage: Storage = window.localStorage
+var todoitems: Array<Object> = JSON.parse(localStorage.getItem('todoitems')) || []
 
-export default function (root, target) {
+export default function (root: Observable, target: HTMLElement): void {
   // container
-  var view = new Views(TodoItem, {
+  var view = new ViewList(TodoItem, {
     el: 'ul',
     class: 'todoitems',
     root: root

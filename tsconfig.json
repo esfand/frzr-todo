@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "target": "ES6",
+        "outDir": "./build",
+        "rootDir": "./src",
+        "suppressImplicitAnyIndexErrors": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "declaration": true
+    },
+    "files": [
+        "./frzr/el.ts",
+        "./frzr/utils.ts",
+        "./frzr/observable.ts",
+        "./frzr/view.ts",
+        "./frzr/viewlist.ts",
+        
+        "./scripts/debug.ts",
+        "./scripts/index.ts",
+        "./scripts/title.ts",
+        "./scripts/todocreate.ts",
+        "./scripts/todoitem.ts",
+        "./scripts/todoitems.ts"
+    ]
+}

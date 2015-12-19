@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node watch",
+    "postinstall": "mkdir -p public/js && mkdir -p public/css && npm run build-css && npm run build-js && npm run build-html",
     "build-js": "rollup -f iife scripts/index.js | babel -o public/js/main-dev.js && uglifyjs public/js/main-dev.js -cmo public/js/main.js",
     "build-css": "stylus -u nib css/index.styl -o public/css/main.css",
     "build-html": "jade views/index.jade -P -o public/",
@@ -21,7 +22,7 @@
   },
   "homepage": "https://github.com/pakastin/frzr#readme",
   "dependencies": {
-    "frzr": "^0.7.5"
+    "frzr": "^0.6.3"
   },
   "devDependencies": {
     "babel": "^5.8.23",

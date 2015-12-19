@@ -1,14 +1,14 @@
 
-import {Observable} from 'frzr'
+import {Observable} from '../frzr/observable'
 
 import debug from './debug'
 import title from './title'
 import todocreate from './todocreate'
 import todoitems from './todoitems'
 
-var $rendertime = document.getElementById('rendertime')
-var $container = document.getElementById('container')
-var root = new Observable()
+var $rendertime: HTMLElement = document.getElementById('rendertime')
+var $container: HTMLElement = document.getElementById('container')
+var root: Observable = new Observable()
 
 // mount debug
 debug(root, $rendertime)

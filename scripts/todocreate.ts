@@ -1,15 +1,17 @@
 
-import {shuffle, View} from 'frzr'
+import {View} from '../frzr/view'
+import {shuffle} from '../frzr/utils'
+import {Observable} from '../frzr/observable'
 
 // Choose some of these for placeholder
-var whattodo = ['Buy milk', 'Feed cat', 'Go fishing', 'Pay rent', 'Watch a movie', 'Learn to cook']
+var whattodo: Array<string> = ['Buy milk', 'Feed cat', 'Go fishing', 'Pay rent', 'Watch a movie', 'Learn to cook']
 
 // shuffle
 shuffle(whattodo)
 
-export default function (root, target) {
+export default function (root: Observable, target: HTMLElement): void {
   // Form
-  var form = new View({
+  var form: View = new View({
     el: 'form',
     listen: {
       submit: createTodo
@@ -18,12 +20,12 @@ export default function (root, target) {
   })
 
   // elements
-  var title = new View({
+  var title: View = new View({
     el: 'h2',
     text: 'What to do?',
     parent: form
   })
-  var input = new View({
+  var input: View = new View({
     el: 'input',
     attr: {
       autofocus: true,
@@ -31,12 +33,12 @@ export default function (root, target) {
     },
     parent: form
   })
-  var insertbutton = new View({
+  var insertbutton: View = new View({
     el: 'button',
     text: 'Insert',
     parent: form
   })
-  var clearbutton = new View({
+  var clearbutton: View = new View({
     el: 'button',
     text: 'Clear done',
     listen: {
@@ -44,7 +46,7 @@ export default function (root, target) {
     },
     $root: target
   })
-  var clearallbutton = new View({
+  var clearallbutton: View = new View({
     el: 'button',
     text: 'Clear all',
     listen: {
@@ -55,7 +57,7 @@ export default function (root, target) {
 
   // actions
 
-  function createTodo (e) {
+  function createTodo (e: HTMLElement): void {
     e.preventDefault()
     var newTodo = {
       id: Date.now(),
@@ -73,12 +75,12 @@ export default function (root, target) {
     input.$el.focus()
   }
 
-  function clearDone () {
+  function clearDone (): void {
     clearbutton.$el.blur()
     root.trigger('todo-clear')
   }
 
-  function clearAll () {
+  function clearAll (): void {
     clearallbutton.$el.blur()
     root.trigger('todo-clearall')
   }

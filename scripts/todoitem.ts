@@ -1,5 +1,5 @@
 
-import {View} from 'frzr'
+import {View} from '../frzr/view'
 
 // extend View
 export default View.extend({
@@ -13,7 +13,7 @@ export default View.extend({
 })
 
 // init function, executed when View is added
-function init () {
+function init (): void {
   var self = this
 
   // checkbox + title
@@ -33,14 +33,14 @@ function init () {
 
 // actions
 
-function switchDone () {
+function switchDone (): void {
   var self = this
 
   self.data.done = !self.data.done
   self.parent.root.trigger('todo-update', self.data)
 }
 
-function update (data) {
+function update (data: Object): void {
   var self = this
 
   self.title.text(data.title)
